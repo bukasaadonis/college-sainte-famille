@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.shape.Circle?>
+<StackPane fx:id="splashRoot" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="com.mycompany.college.saint.raphael.controllers.SplashController"
+           styleClass="splash-root" prefWidth="760" prefHeight="440">
+    <Circle radius="255" translateX="-300" translateY="-180" styleClass="splash-orb-soft"/>
+    <Circle radius="180" translateX="330" translateY="190" styleClass="splash-orb-soft-two"/>
+    <VBox alignment="CENTER" spacing="18" maxWidth="560">
+        <StackPane prefWidth="150" prefHeight="150">
+            <Circle fx:id="orbitOne" radius="66" styleClass="splash-orbit-one"/>
+            <Circle fx:id="orbitTwo" radius="53" styleClass="splash-orbit-two"/>
+            <StackPane styleClass="splash-logo-frame" maxWidth="102" maxHeight="102" minWidth="102" minHeight="102">
+                <ImageView fitWidth="94" fitHeight="94" preserveRatio="true" smooth="true" styleClass="splash-logo-image">
+                    <image><Image url="@../images/logo_college_sainte_famille.png"/></image>
+                </ImageView>
+            </StackPane>
+        </StackPane>
+        <VBox alignment="CENTER" spacing="4">
+            <Label text="COLLÈGE SAINTE FAMILLE" styleClass="splash-school"/>
+            <Label text="SYSTÈME DE GESTION SCOLAIRE" styleClass="splash-subtitle"/>
+        </VBox>
+        <VBox spacing="8" maxWidth="430">
+            <HBox alignment="CENTER_LEFT">
+                <Label fx:id="statusLabel" text="Démarrage de l’application…" styleClass="splash-status"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Label fx:id="percentLabel" text="0 %" styleClass="splash-percent"/>
+            </HBox>
+            <ProgressBar fx:id="progressBar" progress="0" maxWidth="Infinity" styleClass="splash-progress"/>
+        </VBox>
+        <Label text="Discipline • Amour • Travail  —  Une gestion scolaire moderne" styleClass="splash-footer"/>
+    </VBox>
+</StackPane>

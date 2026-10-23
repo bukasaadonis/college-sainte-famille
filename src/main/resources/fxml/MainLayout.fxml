@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.mycompany.college.saint.raphael.controllers.MainController"
+            styleClass="desktop-shell">
+    <top>
+        <VBox>
+            <HBox fx:id="titleBar" alignment="CENTER_LEFT" styleClass="window-titlebar">
+                <ImageView fitWidth="24" fitHeight="24" preserveRatio="true" smooth="true" styleClass="window-logo">
+                    <image><Image url="@../images/logo_64.png"/></image>
+                </ImageView>
+                <Label text="Collège Sainte Famille — Système de gestion scolaire" styleClass="window-title"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Label fx:id="dateTimeLabel" styleClass="titlebar-clock"/>
+                <Button text="—" onAction="#minimizeWindow" styleClass="window-button"/>
+                <Button text="□" onAction="#maximizeWindow" styleClass="window-button"/>
+                <Button text="×" onAction="#closeWindow" styleClass="window-button,window-close-button"/>
+            </HBox>
+            <MenuBar styleClass="desktop-menubar">
+                <menus>
+                    <Menu text="Fichier">
+                        <items>
+                            <MenuItem text="Actualiser la page" onAction="#refreshCurrentPage" accelerator="F5"/>
+                            <SeparatorMenuItem/>
+                            <MenuItem text="Fermer la session" onAction="#logout"/>
+                            <MenuItem text="Quitter" onAction="#closeWindow" accelerator="Alt+F4"/>
+                        </items>
+                    </Menu>
+                    <Menu text="Gestion">
+                        <items>
+                            <MenuItem fx:id="studentsMenuItem" text="Élèves" onAction="#showStudents"/>
+                            <MenuItem fx:id="enrollmentsMenuItem" text="Inscriptions" onAction="#showEnrollments"/>
+                            <MenuItem fx:id="classesMenuItem" text="Classes" onAction="#showClasses"/>
+                            <MenuItem fx:id="responsiblesMenuItem" text="Parents et responsables" onAction="#showResponsibles"/>
+                        </items>
+                    </Menu>
+                    <Menu text="Pédagogie">
+                        <items>
+                            <MenuItem fx:id="teachersMenuItem" text="Enseignants" onAction="#showTeachers"/>
+                            <MenuItem fx:id="coursesMenuItem" text="Cours et affectations" onAction="#showCourses"/>
+                            <MenuItem fx:id="gradesMenuItem" text="Saisie des notes" onAction="#showGrades"/>
+                            <MenuItem fx:id="bulletinsMenuItem" text="Résultats et bulletins" onAction="#showBulletins"/>
+                        </items>
+                    </Menu>
+                    <Menu text="Administration">
+                        <items>
+                            <MenuItem fx:id="academicMenuItem" text="Années scolaires et périodes" onAction="#showAcademic"/>
+                            <MenuItem fx:id="usersMenuItem" text="Utilisateurs et accès" onAction="#showUsers"/>
+                            <MenuItem fx:id="historyMenuItem" text="Historique des opérations" onAction="#showHistory"/>
+                        </items>
+                    </Menu>
+                    <Menu text="Affichage">
+                        <items>
+                            <MenuItem text="Afficher / masquer la navigation" onAction="#toggleNavigation"/>
+                        </items>
+                    </Menu>
+                    <Menu text="Aide">
+                        <items><MenuItem text="À propos" onAction="#showAbout"/></items>
+                    </Menu>
+                </menus>
+            </MenuBar>
+            <HBox alignment="CENTER_LEFT" spacing="6" styleClass="command-bar">
+                <Button text="☰" onAction="#toggleNavigation" styleClass="command-button">
+                    <tooltip><Tooltip text="Afficher ou masquer la navigation"/></tooltip>
+                </Button>
+                <Separator orientation="VERTICAL"/>
+                <Button text="⌂  Accueil" onAction="#showDashboard" styleClass="command-button"/>
+                <Button text="＋  Nouvel élève" onAction="#showStudents" styleClass="command-button"/>
+                <Button text="↻  Actualiser" onAction="#refreshCurrentPage" styleClass="command-button"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Label fx:id="pageTitleLabel" text="Tableau de bord" styleClass="command-title"/>
+            </HBox>
+        </VBox>
+    </top>
+    <center>
+        <BorderPane>
+            <left>
+                <VBox fx:id="navigationPane" styleClass="navigation-pane" prefWidth="222" minWidth="205">
+                    <HBox spacing="10" alignment="CENTER_LEFT" styleClass="brand-block">
+                        <StackPane styleClass="brand-logo-frame" minWidth="50" minHeight="50" maxWidth="50" maxHeight="50">
+                            <ImageView fitWidth="46" fitHeight="46" preserveRatio="true" smooth="true" styleClass="brand-logo-image">
+                                <image><Image url="@../images/logo_128.png"/></image>
+                            </ImageView>
+                        </StackPane>
+                        <VBox spacing="1">
+                            <Label text="SAINTE FAMILLE" styleClass="brand-name"/>
+                            <Label text="DISCIPLINE • AMOUR • TRAVAIL" wrapText="true" styleClass="brand-sub"/>
+                        </VBox>
+                    </HBox>
+                    <Separator/>
+                    <Label text="VUE GÉNÉRALE" styleClass="nav-section"/>
+                    <Button fx:id="dashboardButton" text="⌂    Tableau de bord" onAction="#showDashboard" styleClass="nav-button"/>
+                    <Label text="SCOLARITÉ" styleClass="nav-section"/>
+                    <Button fx:id="studentsButton" text="▣    Élèves" onAction="#showStudents" styleClass="nav-button"/>
+                    <Button fx:id="enrollmentsButton" text="▤    Inscriptions" onAction="#showEnrollments" styleClass="nav-button"/>
+                    <Button fx:id="classesButton" text="▦    Classes" onAction="#showClasses" styleClass="nav-button"/>
+                    <Button fx:id="responsiblesButton" text="♙    Responsables" onAction="#showResponsibles" styleClass="nav-button"/>
+                    <Label text="PÉDAGOGIE" styleClass="nav-section"/>
+                    <Button fx:id="teachersButton" text="♟    Enseignants" onAction="#showTeachers" styleClass="nav-button"/>
+                    <Button fx:id="coursesButton" text="▱    Cours" onAction="#showCourses" styleClass="nav-button"/>
+                    <Button fx:id="gradesButton" text="✎    Notes" onAction="#showGrades" styleClass="nav-button"/>
+                    <Button fx:id="bulletinsButton" text="▧    Bulletins" onAction="#showBulletins" styleClass="nav-button"/>
+                    <Label text="SYSTÈME" styleClass="nav-section"/>
+                    <Button fx:id="academicButton" text="◫    Années &amp; périodes" onAction="#showAcademic" styleClass="nav-button"/>
+                    <Button fx:id="usersButton" text="⚿    Utilisateurs" onAction="#showUsers" styleClass="nav-button"/>
+                    <Button fx:id="historyButton" text="◷    Historique" onAction="#showHistory" styleClass="nav-button"/>
+                    <Region VBox.vgrow="ALWAYS"/>
+                    <HBox spacing="9" alignment="CENTER_LEFT" styleClass="profile-box">
+                        <Label fx:id="initialsLabel" text="US" styleClass="avatar"/>
+                        <VBox HBox.hgrow="ALWAYS" spacing="1">
+                            <Label fx:id="userNameLabel" text="Utilisateur" maxWidth="135" styleClass="profile-name"/>
+                            <Label fx:id="roleLabel" text="RÔLE" styleClass="profile-role"/>
+                        </VBox>
+                        <Button text="↪" onAction="#logout" styleClass="profile-logout">
+                            <tooltip><Tooltip text="Déconnexion"/></tooltip>
+                        </Button>
+                    </HBox>
+                </VBox>
+            </left>
+            <center>
+                <StackPane fx:id="contentPane" styleClass="workspace-host"/>
+            </center>
+        </BorderPane>
+    </center>
+    <bottom>
+        <HBox alignment="CENTER_LEFT" spacing="12" styleClass="status-bar">
+            <Label fx:id="statusLabel" text="Prêt"/>
+            <Separator orientation="VERTICAL"/>
+            <Label fx:id="databaseStatusLabel" text="● Vérification de la base…"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label fx:id="windowStateLabel" text="Mode bureau"/>
+            <Separator orientation="VERTICAL"/>
+            <Label text="Collège Sainte Famille • v3.2"/>
+            <Label fx:id="resizeGrip" text="◢" styleClass="resize-grip">
+                <tooltip><Tooltip text="Redimensionner la fenêtre"/></tooltip>
+            </Label>
+        </HBox>
+    </bottom>
+</BorderPane>

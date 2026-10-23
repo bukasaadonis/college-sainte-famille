@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.chart.*?>
+<ScrollPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.mycompany.college.saint.raphael.controllers.DashboardController"
+            fitToWidth="true" styleClass="content-scroll">
+    <VBox styleClass="page" spacing="14">
+        <HBox alignment="CENTER_LEFT" styleClass="module-header">
+            <VBox spacing="2">
+                <Label text="Vue générale de l’établissement" styleClass="page-heading"/>
+                <Label text="Indicateurs scolaires et activité récente" styleClass="page-subtitle"/>
+            </VBox>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label fx:id="yearLabel" text="Année scolaire" styleClass="count-badge"/>
+            <Button text="↻ Actualiser" onAction="#refresh" styleClass="secondary-button"/>
+        </HBox>
+        <GridPane hgap="12" vgap="12">
+            <columnConstraints>
+                <ColumnConstraints percentWidth="33.33"/>
+                <ColumnConstraints percentWidth="33.33"/>
+                <ColumnConstraints percentWidth="33.34"/>
+            </columnConstraints>
+            <VBox GridPane.columnIndex="0" GridPane.rowIndex="0" styleClass="metric-card,metric-accent-blue">
+                <Label text="ÉLÈVES ACTIFS" styleClass="metric-label"/><Label fx:id="totalStudents" text="0" styleClass="metric-value"/>
+            </VBox>
+            <VBox GridPane.columnIndex="1" GridPane.rowIndex="0" styleClass="metric-card,metric-accent-green">
+                <Label text="GARÇONS" styleClass="metric-label"/><Label fx:id="totalBoys" text="0" styleClass="metric-value"/>
+            </VBox>
+            <VBox GridPane.columnIndex="2" GridPane.rowIndex="0" styleClass="metric-card,metric-accent-gold">
+                <Label text="FILLES" styleClass="metric-label"/><Label fx:id="totalGirls" text="0" styleClass="metric-value"/>
+            </VBox>
+            <VBox GridPane.columnIndex="0" GridPane.rowIndex="1" styleClass="metric-card,metric-accent-purple">
+                <Label text="CLASSES OUVERTES" styleClass="metric-label"/><Label fx:id="totalClasses" text="0" styleClass="metric-value"/>
+            </VBox>
+            <VBox GridPane.columnIndex="1" GridPane.rowIndex="1" styleClass="metric-card,metric-accent-blue">
+                <Label text="INSCRIPTIONS ACTIVES" styleClass="metric-label"/><Label fx:id="totalEnrollments" text="0" styleClass="metric-value"/>
+            </VBox>
+            <VBox GridPane.columnIndex="2" GridPane.rowIndex="1" styleClass="metric-card,metric-accent-green">
+                <Label text="UTILISATEURS" styleClass="metric-label"/><Label fx:id="totalUsers" text="0" styleClass="metric-value"/>
+            </VBox>
+        </GridPane>
+        <SplitPane dividerPositions="0.67" styleClass="dashboard-split">
+            <VBox styleClass="card" spacing="8">
+                <Label text="Effectif par classe" styleClass="card-title"/>
+                <BarChart fx:id="classChart" animated="false" legendVisible="false" prefHeight="280" VBox.vgrow="ALWAYS">
+                    <xAxis><CategoryAxis/></xAxis><yAxis><NumberAxis forceZeroInRange="true"/></yAxis>
+                </BarChart>
+            </VBox>
+            <VBox styleClass="card" spacing="8">
+                <Label text="Répartition par sexe" styleClass="card-title"/>
+                <PieChart fx:id="genderChart" labelsVisible="true" prefHeight="280" VBox.vgrow="ALWAYS"/>
+            </VBox>
+        </SplitPane>
+        <VBox styleClass="card" spacing="8">
+            <HBox alignment="CENTER_LEFT"><Label text="Derniers dossiers enregistrés" styleClass="card-title"/><Region HBox.hgrow="ALWAYS"/><Label text="Données récentes" styleClass="panel-tag"/></HBox>
+            <TableView fx:id="recentTable" prefHeight="220">
+                <columns>
+                    <TableColumn fx:id="recentMatricule" text="Matricule" prefWidth="170"/>
+                    <TableColumn fx:id="recentName" text="Élève" prefWidth="330"/>
+                    <TableColumn fx:id="recentClass" text="Classe" prefWidth="180"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </VBox>
+</ScrollPane>

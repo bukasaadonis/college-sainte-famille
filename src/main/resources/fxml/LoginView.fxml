@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.mycompany.college.saint.raphael.controllers.LoginController"
+            styleClass="login-window">
+    <top>
+        <HBox fx:id="titleBar" alignment="CENTER_LEFT" styleClass="window-titlebar">
+            <ImageView fitWidth="24" fitHeight="24" preserveRatio="true" smooth="true" styleClass="window-logo">
+                <image><Image url="@../images/logo_64.png"/></image>
+            </ImageView>
+            <Label text="Collège Sainte Famille — Connexion" styleClass="window-title"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button text="—" onAction="#minimizeWindow" styleClass="window-button"/>
+            <Button text="×" onAction="#closeWindow" styleClass="window-button,window-close-button"/>
+        </HBox>
+    </top>
+    <center>
+        <HBox styleClass="login-body" alignment="CENTER" spacing="0">
+            <VBox styleClass="login-brand-panel" prefWidth="430" minWidth="380" HBox.hgrow="ALWAYS">
+                <StackPane styleClass="login-emblem-frame" minWidth="126" minHeight="126" maxWidth="126" maxHeight="126">
+                    <ImageView fitWidth="116" fitHeight="116" preserveRatio="true" smooth="true" styleClass="login-logo-image">
+                        <image><Image url="@../images/logo_college_sainte_famille.png"/></image>
+                    </ImageView>
+                </StackPane>
+                <Label text="COLLÈGE SAINTE FAMILLE" wrapText="true" styleClass="login-school"/>
+                <Label text="Discipline • Amour • Travail" styleClass="login-slogan"/>
+                <Separator styleClass="login-separator"/>
+                <VBox spacing="12">
+                    <Label text="✓  Gestion centralisée des dossiers scolaires" styleClass="login-feature"/>
+                    <Label text="✓  Suivi des inscriptions, notes et bulletins" styleClass="login-feature"/>
+                    <Label text="✓  Accès sécurisé selon le rôle de l’utilisateur" styleClass="login-feature"/>
+                    <Label text="✓  Interface conçue pour un poste de travail" styleClass="login-feature"/>
+                </VBox>
+                <Region VBox.vgrow="ALWAYS"/>
+                <Label text="Version Desktop 3.2  •  JavaFX 17" styleClass="login-version"/>
+            </VBox>
+            <StackPane styleClass="login-form-panel" prefWidth="520" minWidth="480" HBox.hgrow="ALWAYS">
+                <VBox styleClass="login-dialog" maxWidth="390" spacing="14">
+                    <VBox spacing="4">
+                        <Label text="Ouverture de session" styleClass="login-title"/>
+                        <Label text="Saisissez vos informations d’accès" styleClass="login-subtitle"/>
+                    </VBox>
+                    <Separator/>
+                    <Label text="Identifiant" styleClass="field-label"/>
+                    <TextField fx:id="loginField" promptText="Ex. admin" prefHeight="42"/>
+                    <Label text="Mot de passe" styleClass="field-label"/>
+                    <StackPane>
+                        <PasswordField fx:id="passwordField" promptText="Votre mot de passe" prefHeight="42"/>
+                        <TextField fx:id="passwordVisibleField" promptText="Votre mot de passe" prefHeight="42"/>
+                    </StackPane>
+                    <HBox alignment="CENTER_LEFT">
+                        <CheckBox fx:id="showPasswordCheck" text="Afficher le mot de passe" onAction="#togglePassword"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Label fx:id="databaseLabel" text="Vérification de la base…" styleClass="database-hint"/>
+                    </HBox>
+                    <Label fx:id="messageLabel" wrapText="true" minHeight="22" styleClass="error-text"/>
+                    <StackPane>
+                        <Button fx:id="loginButton" text="Ouvrir la session" onAction="#handleLogin"
+                                defaultButton="true" maxWidth="Infinity" prefHeight="44" styleClass="primary-button,login-button"/>
+                        <ProgressIndicator fx:id="loginProgress" prefWidth="22" prefHeight="22" maxWidth="22" maxHeight="22"
+                                           StackPane.alignment="CENTER_RIGHT" translateX="-18"/>
+                    </StackPane>
+                    <HBox alignment="CENTER" styleClass="login-help-box">
+                        <Label text="Compte de démonstration : admin / Admin@123" styleClass="helper-text"/>
+                    </HBox>
+                </VBox>
+            </StackPane>
+        </HBox>
+    </center>
+</BorderPane>

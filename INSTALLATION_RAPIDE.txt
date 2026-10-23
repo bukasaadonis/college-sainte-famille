@@ -1,0 +1,26 @@
+COLLEGE SAINTE FAMILLE - INSTALLATION RAPIDE
+============================================
+
+SUR CHAQUE NOUVEL ORDINATEUR :
+
+1) Installer / ouvrir XAMPP.
+2) Démarrer MySQL.
+3) Ouvrir phpMyAdmin.
+4) Onglet IMPORTER.
+5) Choisir : database/college_sainte_famille_portable.sql
+6) Cliquer sur EXÉCUTER.
+7) Ouvrir ce projet dans NetBeans.
+8) Clean and Build.
+9) Run.
+
+L'application essaie automatiquement MySQL sur les ports 3306 et 3307.
+
+COMPTES :
+admin        / Admin@123
+secretaire   / Secretaire@123
+directeur    / Directeur@123
+professeur   / Professeur@123
+
+IMPORTANT :
+Ne jamais copier le dossier xampp/mysql/data d'une machine à l'autre.
+Toujours transférer la base avec le fichier .sql.
